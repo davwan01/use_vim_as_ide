@@ -33,18 +33,30 @@ nmap <Leader>w :w<CR>
 nmap <Leader>WQ :wa<CR>:q<CR>
 " 不做任何保存，直接退出 vim
 nmap <Leader>Q :qa!<CR>
+" Resize window
+nnoremap <Leader>> <C-w>>
+nnoremap <Leader>< <C-w><
+
 
 " 设置快捷键遍历子窗口
 " 依次遍历
-nnoremap nw <C-W><C-W>
+"nnoremap nw <C-W><C-W>
 " 跳转至右方的窗口
 nnoremap <Leader>lw <C-W>l
+nnoremap <Leader><Leader>l <C-W>l
+nnoremap <Leader><C-l> <C-W>l
 " 跳转至方的窗口
 nnoremap <Leader>hw <C-W>h
+nnoremap <Leader><Leader>h <C-W>h
+nnoremap <Leader><C-h> <C-W>h
 " 跳转至上方的子窗口
 nnoremap <Leader>kw <C-W>k
+nnoremap <Leader><Leader>k <C-W>k
+nnoremap <Leader><C-k> <C-W>k
 " 跳转至下方的子窗口
 nnoremap <Leader>jw <C-W>j
+nnoremap <Leader><Leader>j <C-W>j
+nnoremap <Leader><C-j> <C-W>j
 
 " 定义快捷键在结对符之间跳转，助记 pair
 nmap <Leader>pa %
@@ -76,8 +88,8 @@ execute pathogen#infect()
 
 " 配色方案
 set background=dark
-colorscheme solarized
-"colorscheme molokai
+"colorscheme solarized
+colorscheme molokai
 "colorscheme phd
 
 " >>
@@ -132,7 +144,7 @@ set hlsearch
 " 其他美化
 
 " 设置 gvim 显示字体
-set guifont=YaHei\ Consolas\ Hybrid\ 10.5
+set guifont=YaHei\ Consolas\ Hybrid\ 11.5
 
 " 禁止折行
 set nowrap
@@ -159,17 +171,17 @@ syntax on
 filetype indent on
 
 " 将制表符扩展为空格
-set expandtab
+"set expandtab
 " 设置编辑时制表符占用空格数
-set tabstop=4
+"set tabstop=4
 " 设置格式化时制表符占用空格数
-set shiftwidth=4
+set shiftwidth=8
 " 让 vim 把连续数量的空格视为一个制表符
-set softtabstop=4
+"set softtabstop=4
 
 " 缩进可视化插件 Indent Guides
 " 随 vim 自启动
-let g:indent_guides_enable_on_vim_startup=1
+"let g:indent_guides_enable_on_vim_startup=1
 " 从第二层开始可视化显示缩进
 let g:indent_guides_start_level=2
 " 色块宽度
@@ -239,6 +251,7 @@ let g:SignatureMap = {
 " 默认 --c++-kinds=+p+l，重新设置为 --c++-kinds=+l+p+x+c+d+e+f+g+m+n+s+t+u+v
 " 默认 --fields=+iaS 不满足 YCM 要求，需改为 --fields=+iaSl
 let g:indexer_ctagsCommandLineOptions="--c++-kinds=+l+p+x+c+d+e+f+g+m+n+s+t+u+v --fields=+iaSl --extra=+q"
+let g:indexer_disableCtagsWarning=1
 
 " 正向遍历同名标签
 nmap <Leader>tn :tnext<CR>
@@ -306,6 +319,7 @@ let g:tagbar_type_cpp = {
 
 " 使用 ctrlsf.vim 插件在工程内全局查找光标所在关键字，设置快捷键。快捷键速记法：search in project
 nnoremap <Leader>sp :CtrlSF<CR>
+nnoremap <Leader>so :CtrlSFOpen<CR>
 
 " <<
 
@@ -398,7 +412,7 @@ let g:syntastic_warning_symbol = '⚠'
 " 由接口快速生成实现框架
 
 " 设置 pullproto.pl 脚本路径
-let g:protodefprotogetter='~/.vim/bundle/vim-protodef/pullproto.pl'
+"let g:protodefprotogetter='~/.vim/bundle/vim-protodef/pullproto.pl'
 
 " 成员函数的实现顺序与声明顺序一致
 let g:disable_protodef_sorting=1
@@ -441,8 +455,8 @@ let NERDTreeAutoDeleteBuffer=1
 map <Leader>bl :MBEToggle<cr>
 
 " buffer 切换快捷键
-map <C-Tab> :MBEbn<cr>
-map <C-S-Tab> :MBEbp<cr>
+map <A-x> :MBEbn<cr>
+map <A-z> :MBEbp<cr>
 
 " <<
 
@@ -468,8 +482,8 @@ map <leader>rs :source my.vim<cr>
 " <<
  
 " 设置快捷键实现一键编译及运行
-nmap <Leader>m :wa<CR> :cd build/<CR> :!rm -rf main<CR> :!cmake CMakeLists.txt<CR>:make<CR><CR> :cw<CR> :cd ..<CR>
-nmap <Leader>g :wa<CR>:cd build/<CR>:!rm -rf main<CR>:!cmake CMakeLists.txt<CR>:make<CR><CR>:cw<CR>:cd ..<CR>:!build/main<CR>
+"nmap <Leader>m :wa<CR> :cd build/<CR> :!rm -rf main<CR> :!cmake CMakeLists.txt<CR>:make<CR><CR> :cw<CR> :cd ..<CR>
+"nmap <Leader>g :wa<CR>:cd build/<CR>:!rm -rf main<CR>:!cmake CMakeLists.txt<CR>:make<CR><CR>:cw<CR>:cd ..<CR>:!build/main<CR>
 
 " >>
 " 快速选中结对符内的文本
