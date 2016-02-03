@@ -1,24 +1,81 @@
-" 更新时间：2015-01-18 21:30:31
+set nocompatible              " be iMproved, required
+filetype off                  " required
 
-" 定义快捷键的前缀，即 <Leader>
-let mapleader=";"
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
 
-" >>
-" 文件类型侦测
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
 
-" 开启文件类型侦测
-filetype on
-" 根据侦测到的不同类型加载对应的插件
-filetype plugin on
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
+" Plugin 'tpope/vim-fugitive'
+" plugin from http://vim-scripts.org/vim/scripts.html
+" Plugin 'L9'
+" Git plugin not hosted on GitHub
+" Plugin 'git://git.wincent.com/command-t.git'
+" git repos on your local machine (i.e. when working on your own plugin)
+" Plugin 'file:///home/gmarik/path/to/plugin'
+" The sparkup vim script is in a subdirectory of this repo called vim.
+" Pass the path to set the runtimepath properly.
+" Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+" Avoid a name conflict with L9
+" Plugin 'user/L9', {'name': 'newL9'}
+
+" plugins
+Plugin 'Lokaltog/vim-powerline'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'Mizuchi/STL-Syntax'
+Plugin 'vim-scripts/a.vim'
+Plugin 'kshenoy/vim-signature'
+Plugin 'vim-scripts/vimprj'
+Plugin 'vim-scripts/DfrankUtil'
+Plugin 'wwfiney/indexer'
+Plugin 'majutsushi/tagbar'
+Plugin 'yegappan/grep'
+Plugin 'mileszs/ack.vim'
+Plugin 'dyng/ctrlsf.vim'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'SirVer/ultisnips'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'scrooloose/nerdtree'
+Plugin 'fholgado/minibufexpl.vim'
+Plugin 'scrooloose/syntastic'
+Plugin 'gcmt/wildfire.vim'
+Plugin 'easymotion/vim-easymotion'
+Plugin 'suan/vim-instant-markdown'
+
+" colors
+Plugin 'tomasr/molokai'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
 
 " <<
-
+" 定义快捷键的前缀，即 <Leader>
+let mapleader=";"
 " >>
 " vim 自身（非插件）快捷键
 
 " 定义快捷键到行首和行尾
-nmap <Leader>lb 0
-nmap <Leader>le $
+nmap <Leader>b 0
+nmap <Leader>e $
 
 " 设置快捷键将选中文本块复制至系统剪贴板
 vnoremap <Leader>y "+y
@@ -82,15 +139,18 @@ set wildmenu
 
 " 插件管理
 " 将 pathogen 自身也置于独立目录中，需指定其路径
-runtime bundle/pathogen/autoload/pathogen.vim
+"runtime bundle/pathogen/autoload/pathogen.vim
 " 运行 pathogen
-execute pathogen#infect()
+"execute pathogen#infect()
 
 " 配色方案
 set background=dark
 "colorscheme solarized
 colorscheme molokai
 "colorscheme phd
+"colorscheme darkblue2
+"colorscheme cthulhian
+"colorscheme oceandeep
 
 " >>
 " 营造专注气氛
@@ -382,10 +442,9 @@ let g:ycm_complete_in_comments=1
 let g:ycm_confirm_extra_conf=0
 
 " 开启 YCM 标签补全引擎
-let g:ycm_collect_identifiers_from_tags_files=0
-"" 引入 C++ 标准库 tags
+let g:ycm_collect_identifiers_from_tags_files=1
+" 引入 C++ 标准库 tags
 "set tags+=/data/misc/software/app/vim/stdcpp.tags
-"set tags+=/data/misc/software/app/vim/sys.tags
 
 " YCM 集成 OmniCppComplete 补全引擎，设置其快捷键
 inoremap <leader>; <C-x><C-o>
@@ -401,6 +460,10 @@ let g:ycm_cache_omnifunc=0
 
 " 语法关键字补全
 let g:ycm_seed_identifiers_with_syntax=1
+
+" try to work with syntastic
+"let g:ycm_register_as_syntastic_checker = 0
+"let g:ycm_show_diagnostics_ui = 0
 
 " <<
  
@@ -452,7 +515,7 @@ let NERDTreeAutoDeleteBuffer=1
 " 多文档编辑
  
 " 显示/隐藏 MiniBufExplorer 窗口
-map <Leader>bl :MBEToggle<cr>
+map <Leader>mbl :MBEToggle<cr>
 
 " buffer 切换快捷键
 map <A-x> :MBEbn<cr>
@@ -467,7 +530,7 @@ map <A-z> :MBEbp<cr>
 " 设置环境保存项
 set sessionoptions="blank,globals,localoptions,tabpages,sesdir,folds,help,options,resize,winpos,winsize"
 
-" 保存 undo 历史。必须先行创建 .undo_history/
+" 保存 undo 历史
 set undodir=~/.undo_history/
 set undofile
 
