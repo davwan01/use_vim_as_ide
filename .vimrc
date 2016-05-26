@@ -29,7 +29,7 @@ Plugin 'VundleVim/Vundle.vim'
 " plugins
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'Lokaltog/vim-powerline'
+Plugin 'vim-airline/vim-airline'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'Mizuchi/STL-Syntax'
 Plugin 'vim-scripts/a.vim'
@@ -126,6 +126,14 @@ nnoremap <Leader>gc :Gcommit<CR>
 nmap <A-q> [c
 nmap <A-w> ]c
 
+" air-line configuration
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '◀'
+let g:airline_symbols.crypt = '🔒'
+let g:airline_section_error = ''
+let g:airline_section_warning = ''
+let g:airline_section_b = '%{fugitive#statusline()}'
+
 " <<
 
 " >>
@@ -212,13 +220,13 @@ set hlsearch
 " 其他美化
 
 " 设置 gvim 显示字体
-set guifont=YaHei\ Consolas\ Hybrid\ 15
+set guifont=YaHei\ Consolas\ Hybrid\ 14
 
 " 禁止折行
 set nowrap
 
 " 设置状态栏主题风格
-let g:Powerline_colorscheme='solarized256'
+" let g:Powerline_colorscheme='solarized256'
 
 " <<
 
