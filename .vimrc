@@ -27,6 +27,8 @@ Plugin 'VundleVim/Vundle.vim'
 " Plugin 'user/L9', {'name': 'newL9'}
 
 " plugins
+Plugin 'tpope/vim-fugitive'
+Plugin 'airblade/vim-gitgutter'
 Plugin 'Lokaltog/vim-powerline'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'Mizuchi/STL-Syntax'
@@ -100,23 +102,29 @@ nnoremap <Leader>< <C-w><
 "nnoremap nw <C-W><C-W>
 " 跳转至右方的窗口
 nnoremap <Leader>lw <C-W>l
-nnoremap <Leader><Leader>l <C-W>l
 nnoremap <Leader><C-l> <C-W>l
 " 跳转至方的窗口
 nnoremap <Leader>hw <C-W>h
-nnoremap <Leader><Leader>h <C-W>h
 nnoremap <Leader><C-h> <C-W>h
 " 跳转至上方的子窗口
 nnoremap <Leader>kw <C-W>k
-nnoremap <Leader><Leader>k <C-W>k
 nnoremap <Leader><C-k> <C-W>k
 " 跳转至下方的子窗口
 nnoremap <Leader>jw <C-W>j
-nnoremap <Leader><Leader>j <C-W>j
 nnoremap <Leader><C-j> <C-W>j
 
 " 定义快捷键在结对符之间跳转，助记 pair
 nmap <Leader>pa %
+
+" git plugins
+nnoremap <Leader>gs :Gstatus<CR>
+nnoremap <Leader>gb :Gblame<CR>
+nnoremap <Leader>gd :Gdiff<CR>
+nnoremap <Leader>gr :Gread<CR>
+nnoremap <Leader>gw :Gwrite<CR>
+nnoremap <Leader>gc :Gcommit<CR>
+nmap <A-q> [c
+nmap <A-w> ]c
 
 " <<
 
@@ -204,7 +212,7 @@ set hlsearch
 " 其他美化
 
 " 设置 gvim 显示字体
-set guifont=YaHei\ Consolas\ Hybrid\ 11.5
+set guifont=YaHei\ Consolas\ Hybrid\ 15
 
 " 禁止折行
 set nowrap
@@ -323,6 +331,12 @@ nmap <Leader>tp :tprevious<CR>
 nnoremap <leader>jd :YcmCompleter GoToDeclaration<CR>
 " 只能是 #include 或已打开的文件
 nnoremap <leader>je :YcmCompleter GoToDefinition<CR>
+" Jump to the specific header
+nnoremap <leader>ji :YcmCompleter GoToInclude<CR>
+" Get type
+nnoremap <leader>t :YcmCompleter GetType<CR>
+" Fix it
+nnoremap <leader>fx :YcmCompleter FixIt<CR>
 
 " <<
 
@@ -453,7 +467,7 @@ inoremap <leader>; <C-x><C-o>
 set completeopt-=preview
 
 " 从第一个键入字符就开始罗列匹配项
-let g:ycm_min_num_of_chars_for_completion=1
+let g:ycm_min_num_of_chars_for_completion=2
 
 " 禁止缓存匹配项，每次都重新生成匹配项
 let g:ycm_cache_omnifunc=0
@@ -582,3 +596,7 @@ endfunction
 vnoremap <Leader>he :call HtmlEscape()<CR>
 
 " <<
+"
+
+" 80 columns mark
+let &colorcolumn=join(range(81,999),",")
