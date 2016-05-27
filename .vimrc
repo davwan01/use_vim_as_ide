@@ -30,6 +30,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'Mizuchi/STL-Syntax'
 Plugin 'vim-scripts/a.vim'
@@ -53,6 +54,7 @@ Plugin 'suan/vim-instant-markdown'
 
 " colors
 Plugin 'tomasr/molokai'
+Plugin 'altercation/vim-colors-solarized'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -129,7 +131,6 @@ nmap <A-w> ]c
 " air-line configuration
 let g:airline_left_sep = '▶'
 let g:airline_right_sep = '◀'
-let g:airline_symbols.crypt = '🔒'
 let g:airline_section_error = ''
 let g:airline_section_warning = ''
 let g:airline_section_b = '%{fugitive#statusline()}'
@@ -161,8 +162,14 @@ set wildmenu
 
 " 配色方案
 set background=dark
-"colorscheme solarized
-colorscheme molokai
+if has('gui_running')
+    let g:airline_theme='base16_solarized'
+    colorscheme solarized
+else
+    let g:airline_theme='molokai'
+    colorscheme molokai
+endif
+"colorscheme molokai
 "colorscheme phd
 "colorscheme darkblue2
 "colorscheme cthulhian
