@@ -37,14 +37,14 @@ Plugin 'vim-scripts/a.vim'
 Plugin 'kshenoy/vim-signature'
 Plugin 'vim-scripts/vimprj'
 Plugin 'vim-scripts/DfrankUtil'
-Plugin 'wwfiney/indexer'
-Plugin 'majutsushi/tagbar'
+" Plugin 'wwfiney/indexer'
+" Plugin 'majutsushi/tagbar'
 Plugin 'yegappan/grep'
 Plugin 'mileszs/ack.vim'
 Plugin 'dyng/ctrlsf.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'SirVer/ultisnips'
-Plugin 'Valloric/YouCompleteMe'
+" Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/nerdtree'
 Plugin 'fholgado/minibufexpl.vim'
 Plugin 'scrooloose/syntastic'
@@ -54,7 +54,7 @@ Plugin 'suan/vim-instant-markdown'
 
 " colors
 Plugin 'tomasr/molokai'
-Plugin 'altercation/vim-colors-solarized'
+" Plugin 'altercation/vim-colors-solarized'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -162,13 +162,8 @@ set wildmenu
 
 " 配色方案
 set background=dark
-if has('gui_running')
-    let g:airline_theme='base16_solarized'
-    colorscheme solarized
-else
-    let g:airline_theme='molokai'
-    colorscheme molokai
-endif
+colorscheme molokai
+
 "colorscheme molokai
 "colorscheme phd
 "colorscheme darkblue2
@@ -227,7 +222,7 @@ set hlsearch
 " 其他美化
 
 " 设置 gvim 显示字体
-set guifont=YaHei\ Consolas\ Hybrid\ 14
+set guifont=DejaVuSansMono\ 14
 
 " 禁止折行
 set nowrap
